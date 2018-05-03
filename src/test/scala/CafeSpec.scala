@@ -13,16 +13,16 @@ class CafeSpec extends Specification {
 
   "Cafe" should {
 
-    "produce bill for several menu items" in {
+    "produce bill with no service charge when all items are drinks" in {
 
-      val items = List("Cola", "Coffee", "Cheese Sandwich")
-      Cafe.bill(items) shouldEqual BigDecimal("3.5")
+      val items = List("Cola", "Coffee", "Coffee")
+      Cafe.bill(items) shouldEqual BigDecimal("2.5")
     }
 
-    "produce bill for all menu items with repetitions" in {
+    "produce bill with 10 percent service charge when there is a food item" in {
 
-      val items = List("Cola", "Steak Sandwich", "Cola", "Coffee", "Cheese Sandwich", "Cheese Sandwich")
-      Cafe.bill(items) shouldEqual BigDecimal("10.5")
+      val items = List("Cola", "Steak Sandwich", "Coffee")
+      Cafe.bill(items) shouldEqual BigDecimal("6.6")
     }
   }
 }
