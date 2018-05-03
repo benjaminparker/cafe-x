@@ -21,8 +21,23 @@ class CafeSpec extends Specification {
 
     "produce bill with 10 percent service charge when there is a food item" in {
 
-      val items = List("Cola", "Steak Sandwich", "Coffee")
-      Cafe.bill(items) shouldEqual BigDecimal("6.6")
+      val items = List("Cola", "Cheese Sandwich", "Coffee")
+      Cafe.bill(items) shouldEqual BigDecimal("3.85")
+    }
+
+    "produce bill with 20 percent service charge when there is a hot food item" in {
+
+      val items = List("Cola", "Steak Sandwich", "Steak Sandwich", "Cheese Sandwich")
+      Cafe.bill(items) shouldEqual BigDecimal("13.80")
+    }
+
+    "produce bill with maximum 20 pounds service charge when there is a hot food item" in {
+
+      val items = twentySteakSandwiches ::: fiveCheeseSandwiches ::: List("Coffee", "Cola")
+      Cafe.bill(items) shouldEqual BigDecimal("121.50")
     }
   }
+
+  def twentySteakSandwiches: List[String] = List.fill(20)("Steak Sandwich")
+  def fiveCheeseSandwiches: List[String] = List.fill(5)("Cheese Sandwich")
 }
