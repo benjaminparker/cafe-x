@@ -1,6 +1,7 @@
-sealed trait FoodOrDrink
-case object Food extends FoodOrDrink
-case object HotFood extends FoodOrDrink
-case object Drink extends FoodOrDrink
+sealed trait ServiceChargeCategory
+case object Food extends ServiceChargeCategory
+case object HotFood extends ServiceChargeCategory
+case object Drink extends ServiceChargeCategory
+case object Premium extends ServiceChargeCategory
 
-case class Item(name: String, foodOrDrink: FoodOrDrink, price: BigDecimal)
+case class Item(name: String, foodOrDrink: ServiceChargeCategory, price: BigDecimal)
