@@ -7,15 +7,7 @@ Cola - Cold - 50p
 Coffee - Hot - £1.00
 Cheese Sandwich - Cold - £2.00
 Steak Sandwich - Hot - £4.50
-
-
-Joseph Griffiths	11:00 AM
-Exercise 3 – Premium Menu Items	(15 Minutes)
-
-1.	Lobster, a premium item, is added to the menu at a cost of £25 .....  31.25
-2.	When purchased items include any premium food apply a service charge of 25% to the total bill to a max of £40
-Exercise 3 – Premium Menu Items	(15 Minutes)
-
+Lobster - Premium - £25.00
  */
 class CafeSpec extends Specification {
 

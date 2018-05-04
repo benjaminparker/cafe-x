@@ -15,7 +15,7 @@ object Cafe {
       else total
     }
 
-    val billTotal = itemNames.foldLeft(BigDecimal("0.00"))((t, n) => t + items(n).price)
+    val billTotal = itemNames.foldLeft(BigDecimal("0.00"))(_ + items(_).price)
     addServiceCharge(billTotal)
   }
 }
