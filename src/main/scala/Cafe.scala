@@ -9,13 +9,11 @@ object Cafe {
 
   def bill(itemNames: List[String]): BigDecimal = {
     def addServiceCharge(total: BigDecimal) = {
-      if (itemNames.exists(items(_).foodOrDrink == Premium)) total + (total * BigDecimal(0.25)).min(40)
-      else if (itemNames.exists(items(_).foodOrDrink == HotFood)) total + (total * BigDecimal(0.2)).min(20)
-      else if (itemNames.exists(items(_).foodOrDrink == Food)) total + (total *  BigDecimal(0.1))
-      else total
+      val maxCategory = itemNames.map(items(_)).maxBy(_.serviceChargeCategory.rate).serviceChargeCategory
+      total + (total * maxCategory.rate).min(maxCategory.min)
     }
 
-    val billTotal = itemNames.foldLeft(BigDecimal("0.00"))(_ + items(_).price)
+    val billTotal = itemNames.foldLeft(BigDecimal(0))(_ + items(_).price)
     addServiceCharge(billTotal)
   }
 }

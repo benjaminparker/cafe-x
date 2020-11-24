@@ -1,7 +1,26 @@
-sealed trait ServiceChargeCategory
-case object Food extends ServiceChargeCategory
-case object HotFood extends ServiceChargeCategory
-case object Drink extends ServiceChargeCategory
-case object Premium extends ServiceChargeCategory
+sealed trait ServiceChargeCategory {
+  val rate: BigDecimal
+  val min: Int
+}
 
-case class Item(name: String, foodOrDrink: ServiceChargeCategory, price: BigDecimal)
+case object Drink extends ServiceChargeCategory {
+  val rate = BigDecimal(0.0)
+  val min = 0
+}
+
+case object Food extends ServiceChargeCategory {
+  val rate = BigDecimal(0.1)
+  val min = Int.MaxValue
+}
+
+case object HotFood extends ServiceChargeCategory {
+  val rate = BigDecimal(0.2)
+  val min = 20
+}
+
+case object Premium extends ServiceChargeCategory {
+  val rate = BigDecimal(0.25)
+  val min = 40
+}
+
+case class Item(name: String, serviceChargeCategory: ServiceChargeCategory, price: BigDecimal)
